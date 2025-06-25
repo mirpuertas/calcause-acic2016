@@ -1,6 +1,15 @@
 # Evaluación del Modelo CalCause en Datos de Simulación ACIC 2016
 
-Este repositorio contiene el código y los resultados de una evaluación del modelo CalCause, un método de ensamble para inferencia causal, utilizando los datos de la competencia ACIC (Atlantic Causal Inference Conference) 2016. El objetivo principal fue estimar el Efecto Promedio del Tratamiento en los Tratados (SATT) y analizar el rendimiento del modelo en diversos escenarios simulados.
+Este repositorio contiene el código y los resultados de una evaluación del modelo CalCause, un método de ensamble para inferencia causal, utilizando los datos de la competencia ACIC (Atlantic Causal Inference Conference) 2016. 
+
+El objetivo principal fue estimar el Efecto Promedio del Tratamiento en los Tratados (SATT) y analizar el rendimiento del modelo en diversos escenarios simulados.
+
+## Autores
+- Federico N. LLanes
+- Miguel Ignacio Rodríguez Puertas
+  
+> El modelo fue reconstruido e implementado desde cero a partir del artículo original de ACIC 2016.  
+> [Ver paper](https://github.com/mirpuertas/calcause-acic2016/blob/main/ACIC2016.pdf)
 
 ## Descripción del Modelo CalCause Implementado
 
