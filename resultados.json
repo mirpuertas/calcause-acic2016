@@ -1,0 +1,101 @@
+{
+  "nombre_estudio": "Evaluación del Modelo CalCause en Datos ACIC2016",
+  "fecha_analisis": "12-05-2025",
+  "Integrantes": [
+    {"nombre": "Federico Nicolás Llanes"},
+    {"nombre": "Miguel Ignacio Rodríguez Puertas"}
+  ],
+  "fuente_datos": "ACIC2016 (Dorie et al., 2019), 77 escenarios, 20 datasets/escenario", 
+  "metodologia_resumida": {
+    "modelo": "CalCause (Ensamble RF/GP con HPs fijos, CV interna para selección)",
+    "random_forest_hps": {"n_estimators": 100, "max_depth": 8, "min_samples_split": 5},
+    "gaussian_process_hps": {"kernel": "ConstantKernel(1.0)*RBF(length_scale=1.0)", "alpha": 0.01, "n_restarts_optimizer": 0},
+    "bootstrap_ic": {"replicas": 500, "metodo_percentil": true}
+  },
+  "resumen_global": {
+    "datasets_procesados": 1540,
+    "cobertura_ic_porcentaje": 74.48,
+    "ancho_ic_promedio": 0.3811,
+    "bias_promedio": 0.0567,
+    "mse_promedio": 0.0316,
+    "rmse_global": 0.1779
+  },
+  "modelos_elegidos_conteo": {
+    "RandomForest": 1462,
+    "GaussianProcess": 78
+  },
+  "rendimiento_promedio_por_modelo": { 
+    "GaussianProcess": {
+      "bias": 0.0465,
+      "rmse": 0.1824,
+      "cobertura_ic_porcentaje": 75.6410,
+      "ancho_ic_promedio": 0.4005,
+      "tiempo_seg_promedio": 126.1236
+    },
+    "RandomForest": {
+      "bias": 0.0573,
+      "rmse": 0.1776,
+      "cobertura_ic_porcentaje": 74.4186,
+      "ancho_ic_promedio": 0.3801, 
+      "tiempo_seg_promedio": 61.8507
+    }
+  },
+  "comparacion_cobertura_con_benchmark": {
+    "benchmark_descripcion": "Cobertura aproximada del CalCause original (Dorie et al., 2019, Fig. 3)",
+    "cobertura_benchmark_p0": 0.82, 
+    "test_z_proporcion": {
+      "cobertura_observada_phat": 0.7448,
+      "estadistico_z": -7.68, 
+      "comentario_p_valor": 1.577e-14
+    },
+    "conclusion_test": "Cobertura significativamente inferior al benchmark del CalCause original."
+  },
+  "comparacion_ancho_ic_con_benchmark": {
+    "ancho_ic_calcause_original_aprox": 0.08,
+    "ratio_ancho_tu_calcause_vs_original": 4.76
+  },
+  "analisis_por_escenario": {
+    "descripcion": "Rendimiento en subconjuntos de los 77 escenarios (carpetas). Se muestran los 5 peores/mejores ejemplos para RMSE y cobertura, y los 5 mayores para ancho de IC.",
+    "carpetas_mayor_rmse_promedio": [
+      {"carpeta": 12, "rmse_promedio": 0.3174},
+      {"carpeta": 24, "rmse_promedio": 0.3068},
+      {"carpeta": 5, "rmse_promedio": 0.2973},
+      {"carpeta": 13, "rmse_promedio": 0.2746},
+      {"carpeta": 14, "rmse_promedio": 0.2652}
+    ],
+    "carpetas_menor_rmse_promedio": [
+      {"carpeta": 56, "rmse_promedio": 0.0401},
+      {"carpeta": 55, "rmse_promedio": 0.0590},
+      {"carpeta": 70, "rmse_promedio": 0.0611},
+      {"carpeta": 57, "rmse_promedio": 0.0669},
+      {"carpeta": 58, "rmse_promedio": 0.0834}
+    ],
+    "carpetas_menor_cobertura_ic_promedio_porcentaje": [
+      {"carpeta": 36, "cobertura_ic_promedio_porcentaje": 35.0},
+      {"carpeta": 2, "cobertura_ic_promedio_porcentaje": 40.0},
+      {"carpeta": 3, "cobertura_ic_promedio_porcentaje": 40.0},
+      {"carpeta": 34, "cobertura_ic_promedio_porcentaje": 45.0},
+      {"carpeta": 63, "cobertura_ic_promedio_porcentaje": 50.0}
+    ],
+    "carpetas_mayor_ancho_ic_promedio": [
+        {"carpeta": 10, "ancho_ic_promedio": 0.5755}, 
+        {"carpeta": 5, "ancho_ic_promedio": 0.5578},
+        {"carpeta": 4, "ancho_ic_promedio": 0.5225},
+        {"carpeta": 52, "ancho_ic_promedio": 0.5213},
+        {"carpeta": 49, "ancho_ic_promedio": 0.5208}
+    ]
+  },
+  "principales_conclusiones": [
+    "El rendimiento puntual (RMSE de 0.1779) es decente, aunque no se sitúa entre los de mejor desempeño en ACIC2016 y no alcanza la precisión del CalCause original de la competencia.",
+    "La Cobertura del Intervalo de Confianza (74.48%) es subóptima y significativamente inferior tanto al 95% nominal como al ~82% del CalCause original. Si bien lograr la cobertura nominal fue un desafío general en la competencia, este es un punto crítico de mejora futura.",
+    "Los intervalos de Confianza son, en promedio, ~4.76 veces más anchos que los del CalCause original, a pesar de la menor cobertura, indicando problemas de sesgo y/o alta varianza del estimador.",
+    "La baja cobertura no se resolvió con mejoras en la técnica de bootstrap (1000 réplicas, BCa, entre otras téncnicas de bootstrapping), sugiriendo que el problema reside en la calidad de la estimación puntual SATT. Esto puede atribuirse a que los hiperparámetros fijos (derivados de una búsqueda preliminar con GridSearchCV) y el Proceso Gaussiano estándar no son óptimos para todos los escenarios.",
+    "el RandomForest (con los HPs fijos dados) es el modelo predominantemente elegido por la CV interna basada en MSE."
+  ],
+  "propuestas_calcause_v2": [
+    "Priorizar la mejora de la cobertura del IC y la precisión/eficiencia del estimador puntual del SATT.",
+    "Realizar una revisión exhaustiva (y potencial flexibilización o adaptación) de los hiperparámetros de RF y GP.",
+    "Implementar y evaluar una aproximación de kernel para el componente GP (por ejemplo, FastFood, RBFSampler) para mejorar escalabilidad y permitir una mejor optimización de sus HPs. Implementando posibles métodos de L2 o L2-Bayesiano. Además considerar entrenamientos bajo inferencia bayesiana completa (por ejemplo, mediante muestreo MCMC o métodos variacionales)",
+    "Profundizar el análisis del rendimiento en escenarios específicos versus las características de los datos (usando los 'knobs' de ACIC2016) para guiar el rediseño del modelo, prestando especial atención a escenarios más complejos y/o con más ruido."
+  ]
+}
