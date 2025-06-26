@@ -6,7 +6,10 @@ El objetivo principal fue estimar el Efecto Promedio del Tratamiento en los Trat
 
 ## Autores
 - Federico N. LLanes
-- Miguel Ignacio Rodríguez Puertas
+- Miguel Ignacio Rodríguez Puertas ([mirpuertas](https://github.com/mirpuertas))
+
+Trabajo final de la materia *Inferencia Bayesiana Causal*  
+Universidad Nacional de San Martín (1.º Cuatrimestre 2025).
   
 > El modelo fue reconstruido e implementado desde cero a partir del artículo original de ACIC 2016.  
 > [Ver paper](https://github.com/mirpuertas/calcause-acic2016/blob/main/ACIC2016.pdf)
