@@ -6,7 +6,7 @@ El objetivo principal fue estimar el Efecto Promedio del Tratamiento en los Trat
 
 ## Autores
 - Federico N. LLanes
-- Miguel Ignacio Rodríguez Puertas ([mirpuertas](https://github.com/mirpuertas))
+- Miguel Ignacio Rodríguez Puertas · [@mirpuertas](https://github.com/mirpuertas)
 
 Trabajo final de la materia *Inferencia Bayesiana Causal*  
 Universidad Nacional de San Martín (1.º Cuatrimestre 2025).
