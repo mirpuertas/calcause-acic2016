@@ -4,10 +4,8 @@ Este repositorio contiene el código y los resultados de una evaluación del mod
 
 El objetivo principal fue estimar el Efecto Promedio del Tratamiento en los Tratados (SATT) y analizar el rendimiento del modelo en diversos escenarios simulados.
 
-## Autores
-- Federico N. LLanes
-- Miguel Ignacio Rodríguez Puertas · [@mirpuertas](https://github.com/mirpuertas)
-
+## Autor
+Miguel Ignacio Rodríguez Puertas · [@mirpuertas](https://github.com/mirpuertas)\
 Trabajo final de la materia *Inferencia Bayesiana Causal*  
 Universidad Nacional de San Martín (1.º Cuatrimestre 2025).
   
@@ -26,3 +24,6 @@ La versión de CalCause evaluada en este trabajo:
     Los Intervalos de Confianza (IC) del 95% para el SATT se calculan mediante un Percentile bootstrap con 500 réplicas.
 
 Esta configuración "congelada" fue definida tras una fase de desarrollo preliminar (ver tuning.md) y se aplicó de manera consistente a los datos de prueba.
+
+## Nota sobre el desarrollo
+Si bien este trabajo fue entregado como parte de un grupo académico, el desarrollo, implementación y análisis fueron realizados en su totalidad por Miguel Ignacio Rodríguez Puertas.
